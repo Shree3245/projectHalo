@@ -13,6 +13,7 @@ const NewFileAddition = (props) => {
   return (
     <Modal visible={props.visible} animationType="fade">
       <View style={styles.inputContainer}>
+        <TextInput placeholder="Course Goal" style={styles.input} />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
