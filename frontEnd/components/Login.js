@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, TextInput, Button, StyleSheet, Modal} from 'react-native';
-import axios from 'axios';
+import LoginHandler from './LoginHandler';
 const Login = (props) => {
   const [register, setRegister] = useState(false);
   const [user, setUser] = useState('');
   const [passw, setPassw] = useState('');
   const [email, setEmail] = useState('');
+  const [loginBool, setLoginBool] = useState(false);
 
   const userHandler = (enteredText) => {
     setUser(enteredText);
@@ -17,15 +18,6 @@ const Login = (props) => {
 
   const emailHandler = (enteredText) => {
     setEmail(enteredText);
-  };
-
-  const loginHandler = () => {
-    axios({
-      method: 'GET',
-      url: 'http://127.0.0.1:3000/',
-    }).then((res) => {
-      console.log(res.data.message);
-    });
   };
 
   return (
@@ -48,7 +40,7 @@ const Login = (props) => {
             placeholder="Email"
             style={styles.input}
             onChangeText={emailHandler}
-            value={passw}
+            value={email}
           />
         ) : null}
 
@@ -67,9 +59,10 @@ const Login = (props) => {
             <Button
               title="Login"
               onPress={() => {
-                loginHandler();
+                setLoginBool(!loginBool);
               }}
             />
+            {loginBool ? <LoginHandler /> : null}
           </View>
         </View>
       </View>
