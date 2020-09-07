@@ -3,5 +3,6 @@
         "handler",
         "passw",
         "passw handler"
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }

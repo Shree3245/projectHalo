@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, TextInput, Button, StyleSheet, Modal} from 'react-native';
 import LoginHandler from './LoginHandler';
+import RegisterHandler from './RegisterHandler';
 const Login = (props) => {
   const [register, setRegister] = useState(false);
   const [user, setUser] = useState('');
@@ -59,10 +60,9 @@ const Login = (props) => {
             <Button
               title="Login"
               onPress={() => {
-                setLoginBool(!loginBool);
+                setLoginBool(true);
               }}
             />
-            {loginBool ? <LoginHandler /> : null}
           </View>
         </View>
       </View>

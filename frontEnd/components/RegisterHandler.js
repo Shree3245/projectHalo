@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import axios from 'axios';
 
-export default function LoginHandler({username, password}) {
+export default function RegisterHandler() {
   const [item, setItem] = useState([]);
   const [logBool, setLogBool] = useState(false);
 
-  useEffect(() => {
+  useEffect((username, password, email) => {
     if (!logBool) {
-      console.log({username});
       axios
-        .post('https://stormy-escarpment-78427.herokuapp.com/users/login', {
+        .post('https://stormy-escarpment-78427.herokuapp.com/users/register', {
           username: {username},
           password: {password},
+          email: {email},
         })
         .then((res) => {
           console.log(res.data);

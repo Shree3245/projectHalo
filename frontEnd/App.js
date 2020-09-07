@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <View style={styles.mainUI}>
-      <Login visible={loginBool} onLogin={() => setLoginBool(false)} />
+      {/* <Login visible={loginBool} onLogin={() => setLoginBool(false)} /> */}
       <Button
         title="Add New Item"
         onPress={() => setAddModalBool(!addModalBool)}
