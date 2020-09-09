@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, FlatList, Button} from 'react-native';
+import Peer from 'react-native-peerjs';
 import NewFileAddition from './components/NewFileAddition';
 import Login from './components/Login';
 
@@ -7,6 +8,13 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [addModalBool, setAddModalBool] = useState(false);
   const [loginBool, setLoginBool] = useState(true);
+
+  const localPeer = new Peer({
+    host: 'localhost',
+    port: '3000',
+    path: '/peerjs',
+  });
+  console.log(localPeer);
 
   return (
     <View style={styles.mainUI}>
