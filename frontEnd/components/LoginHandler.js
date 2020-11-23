@@ -1,18 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {View} from 'react-native';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { View } from "react-native";
+import axios from "axios";
 
-export default function LoginHandler({username, password}) {
+export default function LoginHandler({ username, password }) {
   const [item, setItem] = useState([]);
   const [logBool, setLogBool] = useState(false);
 
   useEffect(() => {
     if (!logBool) {
-      console.log({username});
+      console.log({ username });
       axios
-        .post('https://stormy-escarpment-78427.herokuapp.com/users/login', {
-          username: {username},
-          password: {password},
+        .post("https://stormy-escarpment-78427.herokuapp.com/users/login", {
+          username: { username },
+          password: { password },
         })
         .then((res) => {
           console.log(res.data);
@@ -26,5 +26,4 @@ export default function LoginHandler({username, password}) {
         });
     }
   });
-  return <View></View>;
 }

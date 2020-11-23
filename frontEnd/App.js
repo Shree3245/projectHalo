@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, FlatList, Button} from 'react-native';
-import NewFileAddition from './components/NewFileAddition';
-import Login from './components/Login';
+import React, { useState } from "react";
+import { StyleSheet, View, FlatList, Button } from "react-native";
+import NewFileAddition from "./components/NewFileAddition";
+import Login from "./components/Login";
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -10,9 +10,13 @@ export default function App() {
 
   return (
     <View style={styles.mainUI}>
-      {/* <Login visible={loginBool} onLogin={() => setLoginBool(false)} /> */}
+      {
+        <Login
+          
+        />
+      }
       <Button
-        title="Add New Item"
+        title='Add New Item'
         onPress={() => setAddModalBool(!addModalBool)}
       />
 
