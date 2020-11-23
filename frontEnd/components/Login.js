@@ -1,13 +1,29 @@
-import React, {useState, useEffect} from 'react';
-import {View, TextInput, Button, StyleSheet, Modal} from 'react-native';
-import LoginHandler from './LoginHandler';
-import RegisterHandler from './RegisterHandler';
+import React, { useState, useEffect } from "react";
+import { View, TextInput, Button, StyleSheet, Modal } from "react-native";
+import axios from "axios";
+import RegisterHandler from "./RegisterHandler";
+
 const Login = (props) => {
   const [register, setRegister] = useState(false);
-  const [user, setUser] = useState('');
-  const [passw, setPassw] = useState('');
-  const [email, setEmail] = useState('');
-  const [loginBool, setLoginBool] = useState(false);
+  const [user, setUser] = useState("");
+  const [passw, setPassw] = useState("");
+  const [email, setEmail] = useState("");
+  const [loginBool, setLoginBool] = useState(true);
+
+  const loginHandler = (username, password) => {
+    console.log(username);
+    axios
+      .post("http://localhost:3000/users/login", {
+        username: { user },
+        password: { passw },
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const userHandler = (enteredText) => {
     setUser(enteredText);
@@ -19,26 +35,27 @@ const Login = (props) => {
 
   const emailHandler = (enteredText) => {
     setEmail(enteredText);
+    console.log(emailHandler);
   };
 
   return (
-    <Modal animationType="fade">
+    <Modal visible={true} animationType='fade'>
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="Username"
+          placeholder='Username'
           style={styles.input}
           onChangeText={userHandler}
           value={user}
         />
         <TextInput
-          placeholder="Password"
+          placeholder='Password'
           style={styles.input}
           onChangeText={passwHandler}
           value={passw}
         />
         {register ? (
           <TextInput
-            placeholder="Email"
+            placeholder='Email'
             style={styles.input}
             onChangeText={emailHandler}
             value={email}
@@ -48,8 +65,8 @@ const Login = (props) => {
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
             <Button
-              title="Register"
-              color="red"
+              title='Register'
+              color='red'
               onPress={() => {
                 setRegister(!register);
                 console.log(register);
@@ -58,9 +75,11 @@ const Login = (props) => {
           </View>
           <View style={styles.button}>
             <Button
-              title="Login"
+              title='Login'
               onPress={() => {
-                setLoginBool(true);
+                setLoginBool(!loginBool);
+                console.log(loginBool);
+                loginHandler(user, passw);
               }}
             />
           </View>
@@ -73,23 +92,23 @@ const Login = (props) => {
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   input: {
-    width: '80%',
-    borderBottomColor: 'black',
+    width: "80%",
+    borderBottomColor: "black",
     borderBottomWidth: 1,
     padding: 10,
     marginBottom: 10,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '60%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "60%",
   },
   button: {
-    width: '50%',
+    width: "50%",
   },
 });
 

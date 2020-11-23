@@ -4,5 +4,7 @@
         "passw",
         "passw handler"
     ],
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.formatOnSave": true,
+    "python.pythonPath": "C:\\Users\\Shreeven\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
 }
