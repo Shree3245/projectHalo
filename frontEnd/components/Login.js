@@ -35,6 +35,7 @@ const Login = (props) => {
 
   const emailHandler = (enteredText) => {
     setEmail(enteredText);
+    console.log(emailHandler);
   };
 
   return (
